@@ -1,30 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateTxnComponent } from './create-txn/create-txn.component';
-import { MatTableModule } from '@angular/material/table';
-import { TxnComponent } from './txn/txn.component';
-import { from } from 'rxjs';
+
+
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateTxnComponent,
-    TxnComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatTableModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

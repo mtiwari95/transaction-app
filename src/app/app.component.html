@@ -1,1 +1,47 @@
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+      <input type="text" [(ngModel)]="searchBuildingPattern" [ngModelOptions]="{standalone: true}" name="searchBuildingPattern" placeholder="Search name, building, tower, property or configuration" class="form-control pl-50">
+    </div>
+  </div>
+  <div class="col"><a href="javascript:void(0)" title="Clear" (click)="clearFilters()"> Clear Filter(Any) </a></div>
+  <div class="col">
+    <div class="form-group">
+      <input type="text" [(ngModel)]="priceFilter" (keyup)='onkeyup($event.target.value)' name="priceFilter" placeholder="Enter Price(Max Price from input)" class="form-control pl-50">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('name')">Name</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('building')">Building</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('building_towers')">Building Tower</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('property_type')">Property Type</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('configuration')">Configuaration Name</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('min_price')">Min Price</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('bedroom')">Bedroom</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('bathroom')">Bath Room</a></th>
+          <th scope="col"><a href="javascript:void(0)" (click)="sortData('half_bathroom')">Half Bath Room</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of buildingList | filter: searchBuildingPattern : name : buildingName : towerName : propertyName : configuration">
+          <td scope="row">{{d.name}}</td>
+          <td>{{d.building.name}}</td>
+          <td>{{d.building_towers.tower_name}}</td>
+          <td>{{d.property_type.name_en}}</td>
+          <td>{{d.configuration.name_en}}</td>
+          <td>{{d.min_price}}</td>
+          <td>{{d.bedroom}}</td>
+          <td>{{d.bathroom}}</td>
+          <td>{{d.half_bathroom}}</td>
+        </tr>
+      </tbody>
+  </table>
+  </div>
+</div>  
+
 <router-outlet></router-outlet>
